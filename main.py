@@ -4,26 +4,35 @@ import matplotlib.pyplot as plt
 import math
 import requests
 
-# Try fetching JSON from Flask API
-st.sidebar.write("🔄 Fetching latest data from Flask API...")
-latest_data = {}
-try:
-    response = requests.get("http://127.0.0.1:5000/latest")
-    if response.ok:
-        latest_data = response.json()
-        st.sidebar.success("✅ Data loaded from Flask")
-    else:
-        st.sidebar.warning("⚠️ No data from Flask API")
-except Exception as e:
-    st.sidebar.error(f"❌ Failed to fetch data: {e}")
+#fetching JSON
+# st.sidebar.write("🔄 Fetching latest data...")
+# latest_data = {}
+# try:
+#     response = requests.get("https://api-test-backend-delta.vercel.app/latest")
+#     if response.ok:
+#         latest_data = response.json()
+#         st.sidebar.success("✅ Data loaded")
+#     else:
+#         st.sidebar.warning("⚠️ No data fetched")
+# except Exception as e:
+#     st.sidebar.error(f"❌ Failed to fetch data: {e}")
 
-# Provide default or loaded values
-home_value = latest_data.get("home_value", 500000)
-deposit = latest_data.get("deposit", 100000)
-interest_rate = latest_data.get("interest_rate", 5.5)
-loan_term = latest_data.get("loan_term", 30)
+# #Provide default or loaded values
+# home_value = latest_data.get("home_value", 500000)
+# deposit = latest_data.get("deposit", 100000)
+# interest_rate = latest_data.get("interest_rate", 5.5)
+# loan_term = latest_data.get("loan_term", 30)
 
-st.title("🏡 Mortgage Repayments Calculator")
+# st.title("🏡 Mortgage Repayments Calculator")
+
+st.title("Random Dog Image")
+
+res = requests.get("https://dog.ceo/api/breeds/image/random")
+if res.ok:
+    img_url = res.json()["message"]
+    st.image(img_url, width=300)
+else:
+    st.error("Failed to fetch image")
 
 st.write("### Input Data")
 col1, col2 = st.columns(2)
